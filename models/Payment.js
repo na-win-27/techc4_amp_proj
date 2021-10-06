@@ -4,7 +4,7 @@ const db= require('../database/connection');
 const schema={
   paymentID:{
     type:sequelize.UUID,
-    primarykey:true,
+    primaryKey:true,
   },
   paymentStatus:{
     type:sequelize.STRING(255),
@@ -13,6 +13,22 @@ const schema={
   amountToBePayed: {
     type:sequelize.INTEGER,
     allowNull:false,
+  },
+  userID: {
+    type: sequelize.UUID,
+    allowNull: true,
+    references: {
+      model: "Users",
+      key: "userID",
+    },
+  },
+  orderID: {
+    type: sequelize.UUID,
+    allowNull: true,
+    references: {
+      model: "Orders",
+      key: "orderID",
+    },
   },
 }
 

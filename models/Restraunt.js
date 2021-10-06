@@ -4,7 +4,7 @@ const db= require('../database/connection');
 const schema={
   restrauntID:{
     type:sequelize.UUID,
-    primarykey:true,
+    primaryKey:true,
   },
   zipcode:{
     type:sequelize.STRING(255),

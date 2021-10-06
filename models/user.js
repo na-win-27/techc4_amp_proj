@@ -4,7 +4,7 @@ const db= require('../database/connection');
 const schema={
   userID:{
     type:sequelize.UUID,
-    primarykey:true,
+    primaryKey:true,
   },
   name:{
     type:sequelize.STRING(255),

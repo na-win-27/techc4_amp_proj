@@ -4,7 +4,7 @@ const db= require('../database/connection');
 const schema={
   cityID:{
     type:sequelize.UUID,
-    primarykey:true,
+    primaryKey:true,
   },
   cityName:{
     type:sequelize.STRING(255),

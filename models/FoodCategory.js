@@ -2,11 +2,11 @@ const sequelize= require('sequelize');
 const db= require('../database/connection');
 
 const schema={
-  foodCategoryNameID:{
+  foodCategoryID:{
     type:sequelize.UUID,
-    primarykey:true,
+    primaryKey:true,
   },
-  foodCategoryName:{
+  foodCategory:{
     type:sequelize.STRING(255),
     allowNull:false,
   },

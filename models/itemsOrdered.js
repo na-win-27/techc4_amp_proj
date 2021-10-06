@@ -1,33 +1,41 @@
-const sequelize= require('sequelize');
-const db= require('../database/connection');
+const sequelize = require("sequelize");
+const db = require("../database/connection");
 
-const schema={
-  itemsOrderedID:{
-    type:sequelize.UUID,
-    primarykey:true,
+const schema = {
+  itemsOrderedID: {
+    type: sequelize.UUID,
+    primaryKey: true,
   },
-  price:{
-    type:sequelize.INTEGER,
-    allowNull:false,
+  // orderID: {
+  //   type: sequelize.UUID,
+  //   allowNull: true,
+  //   references: {
+  //     model: "Orders",
+  //     key: "orderID",
+  //   },
+  // },
+  menuID: {
+    type: sequelize.UUID,
+    allowNull: false,
+    references: {
+      model: "Menus",
+      key: "menuID",
+    },
+  },
+  price: {
+    type: sequelize.INTEGER,
+    allowNull: false,
   },
   quantity: {
-    type:sequelize.INTEGER,
-    allowNull:false,
-  }
-}
+    type: sequelize.INTEGER,
+    allowNull: false,
+  },
+};
 
 const options = {
-  timestamps: true
-}
+  timestamps: true,
+};
 
-const ItemsOrdered=db.define('ItemsOrdered',schema,options);
+const ItemsOrdered = db.define("ItemsOrdered", schema, options);
 
 module.exports = ItemsOrdered;
-
-
-
-
-
-
-
-
