@@ -1,19 +1,30 @@
-module.exports = (sequelize, type) => {
-  return sequelize.define('User', {
-  Steet: {
-    type: DataTypes.STRING,
-    allowNull: false
+const sequelize= require('sequelize');
+const db= require('../database/connection');
+
+const schema={
+  addressID:{
+    type:sequelize.UUID,
+    primarykey:true,
   },
-  CurrentAddress: {
-    type: DataTypes.STRING,
-    allowNull: false
-   
+  street:{
+    type:sequelize.STRING(255),
+    allowNull:false,
+  },
+  currentAddress: {
+    type:sequelize.STRING(255),
+    allowNull:false,
   },
   zipcode: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    type:sequelize.INTEGER,
+    allowNull:false,
   }
-  
-})}
+}
 
+const options = {
+  timestamps: true
+}
+
+const Address=db.define('Address',schema,options);
+
+module.exports = Address;
 
