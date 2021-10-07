@@ -1,22 +1,22 @@
-const sequelize= require('sequelize');
-const db= require('../database/connection');
+const sequelize = require('sequelize')
+const db = require('../database/connection')
 
-const schema={
-  restrauntID:{
-    type:sequelize.UUID,
-    primaryKey:true,
+const schema = {
+  restrauntID: {
+    type: sequelize.UUID,
+    primaryKey: true
   },
-  zipcode:{
-    type:sequelize.STRING(255),
-    allowNull:false,
+  zipcode: {
+    type: sequelize.STRING(255),
+    allowNull: false
   },
   address: {
-    type:sequelize.STRING(255),
-    allowNull:false,
+    type: sequelize.STRING(255),
+    allowNull: false
   },
   rating: {
-    type:sequelize.INTEGER,
-    allowNull:false,
+    type: sequelize.INTEGER,
+    allowNull: false
   }
 }
 
@@ -24,13 +24,6 @@ const options = {
   timestamps: true
 }
 
-const Restraunt=db.define('Restraunt',schema,options);
+const Restraunt = db.define('Restraunt', schema, options)
 
-module.exports = Restraunt;
-
-
-
-
-
-
-
+module.exports = Restraunt

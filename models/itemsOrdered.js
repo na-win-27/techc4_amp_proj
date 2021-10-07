@@ -1,10 +1,10 @@
-const sequelize = require("sequelize");
-const db = require("../database/connection");
+const sequelize = require('sequelize')
+const db = require('../database/connection')
 
 const schema = {
   itemsOrderedID: {
     type: sequelize.UUID,
-    primaryKey: true,
+    primaryKey: true
   },
   // orderID: {
   //   type: sequelize.UUID,
@@ -18,24 +18,24 @@ const schema = {
     type: sequelize.UUID,
     allowNull: false,
     references: {
-      model: "Menus",
-      key: "menuID",
-    },
+      model: 'Menus',
+      key: 'menuID'
+    }
   },
   price: {
     type: sequelize.INTEGER,
-    allowNull: false,
+    allowNull: false
   },
   quantity: {
     type: sequelize.INTEGER,
-    allowNull: false,
-  },
-};
+    allowNull: false
+  }
+}
 
 const options = {
-  timestamps: true,
-};
+  timestamps: true
+}
 
-const ItemsOrdered = db.define("ItemsOrdered", schema, options);
+const ItemsOrdered = db.define('ItemsOrdered', schema, options)
 
-module.exports = ItemsOrdered;
+module.exports = ItemsOrdered

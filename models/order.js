@@ -1,42 +1,42 @@
-const sequelize= require('sequelize');
-const db= require('../database/connection');
+const sequelize = require('sequelize')
+const db = require('../database/connection')
 
-const schema={
-  orderID:{
-    type:sequelize.UUID,
-    primaryKey:true,
+const schema = {
+  orderID: {
+    type: sequelize.UUID,
+    primaryKey: true
   },
-  orderStatus:{
-    type:sequelize.STRING(255),
-    allowNull:false,
+  orderStatus: {
+    type: sequelize.STRING(255),
+    allowNull: false
   },
   orderTime: {
-    type:sequelize.TIME,
-    allowNull:false,
+    type: sequelize.TIME,
+    allowNull: false
   },
   deliveryTime: {
-    type:sequelize.TIME,
-    allowNull:false,
+    type: sequelize.TIME,
+    allowNull: false
   },
   totalPrice: {
-      type:sequelize.INTEGER,
-      allowNull:false,
+    type: sequelize.INTEGER,
+    allowNull: false
   },
   userID: {
     type: sequelize.UUID,
     allowNull: true,
     references: {
-      model: "Users",
-      key: "userID",
-    },
+      model: 'Users',
+      key: 'userID'
+    }
   },
   restrauntID: {
     type: sequelize.UUID,
     allowNull: true,
     references: {
-      model: "Restraunts",
-      key: "restrauntID",
-    },
+      model: 'Restraunts',
+      key: 'restrauntID'
+    }
   },
   // itemsOrderedID: {
   //   type: sequelize.UUID,
@@ -50,24 +50,16 @@ const schema={
     type: sequelize.UUID,
     allowNull: true,
     references: {
-      model: "Addresses",
-      key: "addressID",
-    },
-  },
+      model: 'Addresses',
+      key: 'addressID'
+    }
+  }
 }
 
 const options = {
   timestamps: true
 }
 
-const Order=db.define('Order',schema,options);
+const Order = db.define('Order', schema, options)
 
-module.exports = Order;
-
-
-
-
-
-
-
-
+module.exports = Order

@@ -1,10 +1,8 @@
-const express = require("express");
-const db= require('./database/connection')
-const migrations= require('./models/migrations')
+const express = require('express')
+const db = require('./database/connection')
+const migrations = require('./models/migrations')
 
-
-
-const app = express();
+const app = express()
 
 migrations()
   .then(() => { console.log('Migrations made') })
@@ -12,15 +10,15 @@ migrations()
     console.error(err)
   })
 
-  db.authenticate()
+db.authenticate()
   .then(() => {
     console.log('Connected To Database')
   })
   .catch(err => {
     console.log('An error occurred' + err)
   })
-const PORT = 8080;
+const PORT = 8080
 
 app.listen(PORT, () => {
-   console.log(`Server is running on PORT: ${PORT}`);
-});
+  console.log(`Server is running on PORT: ${PORT}`)
+})
