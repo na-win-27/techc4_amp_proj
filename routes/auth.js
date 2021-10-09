@@ -9,7 +9,6 @@ router.post('/signup',async(req,res)=>{
 });
 
 router.post('/signin',async(req,res)=>{ 
-
     const response = await authController.signin(req.body);    
     res.send(response);
 });

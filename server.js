@@ -2,6 +2,7 @@ const express = require('express')
 const db = require('./database/connection')
 const migrations = require('./models/migrations')
 const authRoutes= require('./routes/auth')
+const isLoggedIn = require('./middlewares/auth')
 
 const app = express()
 
@@ -23,6 +24,9 @@ db.authenticate()
 
 
   app.use('/auth',authRoutes);
+  app.use('/',isLoggedIn,(req, res, next)=>{
+    res.send("ver")
+  });
 const PORT = 8080;
 
 app.listen(PORT, () => {
