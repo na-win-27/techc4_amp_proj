@@ -1,6 +1,7 @@
 const express = require('express')
 const db = require('./database/connection')
 const migrations = require('./models/migrations')
+const authRoutes= require('./routes/auth')
 
 const app = express()
 
@@ -17,7 +18,12 @@ db.authenticate()
   .catch(err => {
     console.log('An error occurred' + err)
   })
-const PORT = 8080
+
+  app.use(express.json());
+
+
+  app.use('/auth',authRoutes);
+const PORT = 8080;
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`)

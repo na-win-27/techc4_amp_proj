@@ -6,6 +6,10 @@ const schema = {
     type: sequelize.UUID,
     primaryKey: true
   },
+  password: {
+    type: sequelize.STRING(255),
+    allowNull: false
+  },
   name: {
     type: sequelize.STRING(255),
     allowNull: false
