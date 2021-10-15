@@ -1,7 +1,12 @@
+const { Sequelize } = require('sequelize')
 const sequelize = require('sequelize')
 const db = require('../database/connection')
 
 const schema = {
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull:false,
+  },
   userID: {
     type: sequelize.UUID,
     primaryKey: true

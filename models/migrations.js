@@ -17,27 +17,29 @@ const migrations = async () => {
     paymentModel.belongsTo(userModel, { foreignKey: 'userID' })
     orderModel.belongsTo(userModel, { foreignKey: 'userID' })
     addressModel.belongsTo(userModel, { foreignKey: 'userID' })
+    addressModel.belongsTo(orderModel, { foreignKey: 'addressID'})
     paymentModel.belongsTo(orderModel, { foreignKey: 'orderID' })
     orderModel.belongsTo(restrauntModel, { foreignKey: 'restrauntID' })
     menuModel.belongsTo(restrauntModel, { foreignKey: 'restrauntID' })
-    itemsOrderModel.belongsTo(menuModel, { foreignKey: 'menuID' })
-    foodCategoryModel.belongsTo(restrauntModel, { foreignKey: 'restrauntID' })
+    itemsOrderModel.belongsTo(orderModel, { foreignKey: 'orderID' })
+    foodCategoryModel.belongsTo(menuModel, { foreignKey: 'menuID' })
     cityModel.belongsTo(addressModel, { foreignKey: 'cityID' })
-    // foodCategoryModel.hasMany(menuModel,{foreignKey:'foodCategoryID'})
     restrauntModel.belongsTo(cityModel, { foreignKey: 'cityID' })
 
     await userModel.sync({ alter: true })
-    await addressModel.sync({ alter: true })
     await cityModel.sync({ alter: true })
+    await addressModel.sync({ alter: true })
+    await restrauntModel.sync({ alter: true })
     await orderModel.sync({ alter: true })
+    await menuModel.sync({ alter: true })
     await foodCategoryModel.sync({ alter: true })
     await paymentModel.sync({ alter: true })
-    await restrauntModel.sync({ alter: true })
+  
     await itemsOrderModel.sync({ alter: true })
-    await menuModel.sync({ alter: true })
+ 
 
 
-    const svg = await sequelizeErd({ source: db }); // sequelizeErd() returns a Promise
+    const svg = await sequelizeErd({ source: db }); 
   writeFileSync('./erd.svg', svg);
   } catch (e) {
     console.error(e)

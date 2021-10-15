@@ -3,7 +3,7 @@ const db = require('./database/connection')
 const migrations = require('./models/migrations')
 const authRoutes= require('./routes/auth')
 const isLoggedIn = require('./middlewares/auth')
-
+const restrauntRoutes=require('./routes/restraunts')
 const app = express()
 
 migrations()
@@ -24,6 +24,9 @@ db.authenticate()
 
 
   app.use('/auth',authRoutes);
+  app.use('/restraunts',restrauntRoutes);
+
+  
   app.use('/',isLoggedIn,(req, res, next)=>{
     res.send("ver")
   });

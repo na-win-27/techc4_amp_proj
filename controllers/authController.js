@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 class authController {
-  static async signup({ email, password, contact, name }) {
+  static async signup({ email, password, contact, name,isAdmin }) {
     try {
       const existing = await User.findOne({ where: { email: email } });
 
@@ -31,6 +31,7 @@ class authController {
       } else {
         const user = {
           userID: uuid4(),
+          isAdmin,
           email: email,
           contact: contact,
           password: hashed,
@@ -55,7 +56,7 @@ class authController {
       return {
         error: true,
         code: 500,
-        message: err.toString(),
+        message: e.toString(),
       };
     }
   }
@@ -95,7 +96,7 @@ class authController {
       return {
         error: true,
         code: 500,
-        message: err.toString(),
+        message:e,
       };
     }
   }

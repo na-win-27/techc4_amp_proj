@@ -6,6 +6,10 @@ const schema = {
     type: sequelize.UUID,
     primaryKey: true
   },
+  name:{
+    type:sequelize.STRING(255),
+    allowNull: false,
+  },
   zipcode: {
     type: sequelize.STRING(255),
     allowNull: false
